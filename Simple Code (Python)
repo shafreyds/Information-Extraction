@@ -1,0 +1,27 @@
+import re
+
+# Sample text
+text = "John Doe is a software engineer at ABC Corp. His email address is john.doe@abc.com."
+
+# Regular expressions to extract information
+name_regex = r"([A-Z][a-z]+ [A-Z][a-z]+)"
+job_regex = r"([a-z]+ [a-z]+ at [A-Z][A-Z][A-Z] [A-Z][a-z]+)"
+email_regex = r"([a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+)"
+
+# Extracting information using regular expressions
+name_match = re.search(name_regex, text)
+job_match = re.search(job_regex, text)
+email_match = re.search(email_regex, text)
+
+# Printing the extracted information
+if name_match:
+    name = name_match.group(0)
+    print("Name:", name)
+
+if job_match:
+    job = job_match.group(0)
+    print("Job:", job)
+
+if email_match:
+    email = email_match.group(0)
+    print("Email:", email)
