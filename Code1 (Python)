@@ -1,0 +1,30 @@
+!pip install spacy
+
+import spacy
+from spacy import displacy
+
+# Download the English model for spaCy
+!python -m spacy download en_core_web_sm
+
+# Load the English model
+nlp = spacy.load('en_core_web_sm')
+
+# Example text for information extraction
+text = "Apple Inc. was founded by Steve Jobs, Steve Wozniak, and Ronald Wayne. " \
+       "It is headquartered in Cupertino, California."
+
+# Process the text
+doc = nlp(text)
+
+# Extract named entities
+entities = []
+for ent in doc.ents:
+    entities.append((ent.text, ent.label_))
+
+# Display the named entities
+print("Named Entities:")
+for entity in entities:
+    print(f"Text: {entity[0]}, Label: {entity[1]}")
+
+# Visualize named entities
+displacy.render(doc, style='ent', jupyter=True)
